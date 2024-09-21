@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cy-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 3px;
+    height: 99.5vh;
+    border: 3px solid #2C7A7B;
+    border-radius: 10px;
+    margin-right: 2px;
+    background-color: #f9f9f9;
+}
+
+#cy {
+    height: 80vh;
+    width: 90%;
+    border-radius: 5px;
+    border: 2px solid rgb(160, 160, 160);
+}
+
+.nodes_input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 99.5vh;
+    margin-top: 3px;
+    box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1);
+    border: 3px solid #2C7A7B;
+    border-radius: 10px;
+    margin-left: 2px;
+    background-color: #f4faff;
+    padding: 10px;
+}
+
+.edge_input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 5%;
+    width: 25%;
+}
+
+.graph-specification {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    width: 90%;
+}
+
+input, textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease-in-out;
+}
+
+input:focus, textarea:focus {
+    border-color: #2C7A7B;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #3182ce;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #2C7A7B;
+}
+
+.traversal-result {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.traversal-result h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.traversal-result-box {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    color: #333;
+}
+
+.gutter.gutter-horizontal {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+    cursor: col-resize;
+}
+
+.gutter.gutter-horizontal:hover {
+    background-color: lightgray;
+}
+
+.gutter {
+    background-color: #eee;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.split {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+}

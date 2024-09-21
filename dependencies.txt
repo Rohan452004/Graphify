@@ -1,0 +1,6 @@
+react
+react-dom
+@chakra-ui/react
+react-split
+cytoscape
+cytoscape-edgehandles
