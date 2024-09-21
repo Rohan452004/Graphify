@@ -14,6 +14,7 @@ import {
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import Split from 'react-split';
 import { useToast } from '@chakra-ui/react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 function App() {
   const [cy, setcy] = useState([]);
@@ -426,6 +427,7 @@ function App() {
               </Button>
         </div>
       </Split>
+      <SpeedInsights/>
     </ChakraProvider>
   );
 }
