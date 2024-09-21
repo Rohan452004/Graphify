@@ -14,7 +14,7 @@ import {
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import Split from 'react-split';
 import { useToast } from '@chakra-ui/react';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
   const [cy, setcy] = useState([]);
