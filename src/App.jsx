@@ -9,7 +9,7 @@ import './App.css';
 import {
   Input, Textarea, Button, Card, CardHeader, Heading, Menu,
   MenuButton, MenuList, MenuItemOption, MenuOptionGroup, MenuDivider,
-  VStack, HStack, ChakraProvider, Box, Flex, Image, 
+  VStack, HStack, ChakraProvider, Box, Flex, Image, Radio, RadioGroup
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import Split from 'react-split';
@@ -23,7 +23,7 @@ function App() {
   const [bfsStartNode, setBfsStartNode] = useState(''); 
   const [dfsStartNode, setDfsStartNode] = useState(''); 
   const [traversalResult, setTraversalResult] = useState([]); 
-
+  const [indexing, setIndexing] = useState('0');
 
   useEffect(() => {
     let cy1 = cytoscape({
@@ -100,7 +100,8 @@ function App() {
         const nodeCount = parseInt(n);
         
         for (var i = 0; i < nodeCount; i++) {
-            arr.push({ data: { id: `${i}` } });
+            let nodeId = indexing === '1' ? i + 1 : i;
+            arr.push({ data: { id: `${nodeId}` } });
         }
         
         cy.add(arr);
@@ -371,6 +372,17 @@ function App() {
             </Card>
   
             <VStack spacing={4} align="stretch" padding="10px">
+
+            <Box>
+              <Heading size="sm" mb="2">Choose Indexing Type</Heading>
+              <RadioGroup onChange={setIndexing} value={indexing}>
+                <HStack spacing="24px">
+                  <Radio value="0">0-based Indexing</Radio>
+                  <Radio value="1">1-based Indexing</Radio>
+                </HStack>
+              </RadioGroup>
+            </Box>
+
               {/* Vertices Input */}
               <Input variant='filled' onChange={generate} placeholder='Enter Number Of Vertices' width='100%' className="node_number" />
   
@@ -391,13 +403,6 @@ function App() {
                 <Button colorScheme='red' onClick={resetGraph}>Reset</Button>
               </HStack>
   
-              {/* Traversal Result */}
-              <Box textAlign="center">
-                <Heading size="md">Traversal Result:</Heading>
-                <Box padding="10px" border="1px solid #ccc" borderRadius="5px" bg="white">
-                {Array.isArray(traversalResult) ? traversalResult.join(', ') : traversalResult}
-                </Box>
-              </Box>
             </VStack>
           </div>
   
@@ -422,9 +427,18 @@ function App() {
             <Button colorScheme="green" ml='10px' onClick={newGraph} >New Graph</Button>
           </div>
           <div id="cy" style={{ height: '500px', width: '100%', marginTop: '20px' }}></div>
+          <HStack>
+          {/* Traversal Result */}
+          <Box textAlign="center" marginTop="10px" marginRight="200px">
+                <Heading size="md">Traversal Result:</Heading>
+                <Box padding="10px" border="1px solid #ccc" borderRadius="5px" bg="white">
+                {Array.isArray(traversalResult) ? traversalResult.join(', ') : traversalResult}
+                </Box>
+          </Box>
           <Button onClick={download_graph_png} colorScheme='blue' variant='solid' marginTop="10px">
                 Download Png
-              </Button>
+          </Button>
+          </HStack>
         </div>
       </Split>
       <SpeedInsights/>
