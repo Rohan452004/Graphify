@@ -12,7 +12,6 @@ import {
   VStack, HStack, ChakraProvider, Box, Flex, Image, Radio, RadioGroup
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import Split from 'react-split';
 import { useToast } from '@chakra-ui/react';
 import { SpeedInsights } from "@vercel/speed-insights/react"
 
@@ -347,32 +346,29 @@ function App() {
 
     return (
       <ChakraProvider>
-        <Split className="split">
-          <div className="nodes_input">
-            <Card marginTop="5px" width="90%" maxWidth="600px" backgroundColor="lightcyan">
-              <CardHeader>
-                <Flex align="center" justify="center" wrap="wrap">
-                  <Image
-                    src="./bfs_dfs.gif"
-                    alt="Graph Visualization"
-                    height='100px'
-                    width='200px'
-                    mr="20px"
-                    maxW="100%"
-                  />
+      <div className="split">
+        <div className="nodes_input">
+          <Card marginTop="5px" width="90%" maxWidth="600px" backgroundColor="lightcyan">
+            <CardHeader>
+              <Flex align="center" justify="center" wrap="wrap">
+                <Image
+                  src="./bfs_dfs.gif"
+                  alt="Graph Visualization"
+                  height={{ base: '80px', md: '100px' }}
+                  width={{ base: '150px', md: '200px' }}
+                  mr={{ base: '10px', md: '20px' }}
+                  maxW="100%"
+                />
                 <Box textAlign="center" my={4} py={4} borderRadius="md">
-                <Heading fontFamily="monospace" fontWeight="700" fontSize='xx-large' letterSpacing="wide" 
-                  textAlign="center" color="blue.600" >
+                  <Heading fontFamily="cursive" fontStyle="italic" fontWeight="1000" fontSize={{ base: 'x-large', md: 'xx-large' }} letterSpacing="wide" color="blue.600">
                     Graphify
-                </Heading>
+                  </Heading>
                 </Box>
-
-                </Flex>
-              </CardHeader>
-            </Card>
-  
-            <VStack spacing={4} align="stretch" padding="10px">
-
+              </Flex>
+            </CardHeader>
+          </Card>
+    
+          <VStack spacing={4} align="stretch" padding="10px" width="100%">
             <Box>
               <Heading size="sm" mb="2">Choose Indexing Type</Heading>
               <RadioGroup onChange={setIndexing} value={indexing}>
@@ -382,36 +378,36 @@ function App() {
                 </HStack>
               </RadioGroup>
             </Box>
-
-              {/* Vertices Input */}
-              <Input variant='filled' onChange={generate} placeholder='Enter Number Of Vertices' width='100%' className="node_number" />
-  
-              {/* Edges Input */}
-              <Textarea variant="filled" onChange={add_edge} placeholder={`Enter Edges\nUnweighted -> (Source,Target) eg. 2 3\nWeighted -> (Source,Target,Weight) eg. 2 3 4`} height="250px" className="edge_specification" />
-
-              {/* BFS Input and Button */}
-              <HStack spacing={3}>
-                <Input value={bfsStartNode} onChange={(e) => setBfsStartNode(e.target.value)} width="70%" placeholder="Enter BFS Start Node" className="bfs_input" />
-                <Button onClick={() => bfs(bfsStartNode)} colorScheme='blue' variant='solid' className="bfs_button">Start BFS</Button>
-                <Button colorScheme='red' onClick={resetGraph}>Reset</Button>
-              </HStack>
-  
-              {/* DFS Input and Button */}
-              <HStack spacing={3}>
-                <Input value={dfsStartNode} onChange={(e) => setDfsStartNode(e.target.value)} width="70%" placeholder="Enter DFS Start Node" className="dfs_input" />
-                <Button onClick={() => dfs(dfsStartNode)} colorScheme='blue' variant='solid' className="dfs_button">Start DFS</Button>
-                <Button colorScheme='red' onClick={resetGraph}>Reset</Button>
-              </HStack>
-  
-            </VStack>
-          </div>
-  
-          <div className="cy-container">
+    
+            {/* Vertices Input */}
+            <Input variant='filled' onChange={generate} placeholder='Enter Number Of Vertices' width='100%' className="node_number" />
+    
+            {/* Edges Input */}
+            <Textarea variant="filled" onChange={add_edge} placeholder={`Enter Edges\nUnweighted -> (Source,Target) eg. 2 3\nWeighted -> (Source,Target,Weight) eg. 2 3 4`} height="250px" className="edge_specification" />
+    
+            {/* BFS Input and Button */}
+            <HStack spacing={3}>
+              <Input value={bfsStartNode} onChange={(e) => setBfsStartNode(e.target.value)} width={{ base: "60%", md: "70%" }} placeholder="Enter BFS Start Node" className="bfs_input" />
+              <Button onClick={() => bfs(bfsStartNode)} colorScheme='blue' variant='solid' className="bfs_button">Start BFS</Button>
+              <Button colorScheme='red' onClick={resetGraph}>Reset</Button>
+            </HStack>
+    
+            {/* DFS Input and Button */}
+            <HStack spacing={3}>
+              <Input value={dfsStartNode} onChange={(e) => setDfsStartNode(e.target.value)} width={{ base: "60%", md: "70%" }} placeholder="Enter DFS Start Node" className="dfs_input" />
+              <Button onClick={() => dfs(dfsStartNode)} colorScheme='blue' variant='solid' className="dfs_button">Start DFS</Button>
+              <Button colorScheme='red' onClick={resetGraph}>Reset</Button>
+            </HStack>
+    
+          </VStack>
+        </div>
+    
+        <div className="cy-container">
           <div className="graph-specification">
             <Menu closeOnSelect={false}>
-              <MenuButton as={Button} colorScheme='blue' >
+              <MenuButton as={Button} colorScheme='blue' mt={{ base: '10px', md: '0' }}>
                 Customizations <ChevronDownIcon />
-              </MenuButton> 
+              </MenuButton>
               <MenuList minWidth='240px'>
                 <MenuOptionGroup defaultValue='asc' title='Type' type='radio'>
                   <MenuItemOption value="directed" onClick={event => graph_specification('triangle')}>Directed</MenuItemOption>
@@ -424,25 +420,44 @@ function App() {
                 </MenuOptionGroup>
               </MenuList>
             </Menu>
-            <Button colorScheme="green" ml='10px' onClick={newGraph} >New Graph</Button>
+            <Button colorScheme="green" ml={{ base: '10px', md: '10px' }} mt={{ base: '10px', md: '0' }} onClick={newGraph}>
+              New Graph
+            </Button>
           </div>
           <div id="cy" style={{ height: '500px', width: '100%', marginTop: '20px' }}></div>
-          <HStack>
-          {/* Traversal Result */}
-          <Box textAlign="center" marginTop="10px" marginRight="200px">
-                <Heading size="md">Traversal Result:</Heading>
-                <Box padding="10px" border="1px solid #ccc" borderRadius="5px" bg="white">
+          <HStack
+            spacing={{ base: 2, md: 4 }} 
+            align="center"
+            justify={{ base: "center", md: "space-around" }} 
+            flexDirection={{ base: "column", md: "row" }} 
+            width="100%"
+            marginTop="10px"
+          >
+            {/* Traversal Result */}
+            <Box textAlign={{ base: "center", md: "left" }} marginRight={{ md: "200px" }} marginBottom="10px" width={{ base: "70%", md: "auto" }}>
+              <Heading size="md" mb={2}>Traversal Result:</Heading>
+              <Box padding="10px" border="1px solid #ccc" borderRadius="5px" bg="white" width={{ base: "100%", md: "auto" }}>
                 {Array.isArray(traversalResult) ? traversalResult.join(', ') : traversalResult}
-                </Box>
-          </Box>
-          <Button onClick={download_graph_png} colorScheme='blue' variant='solid' marginTop="10px">
-                Download Png
-          </Button>
+              </Box>
+            </Box>
+    
+            {/* Download Button */}
+            <Button
+              onClick={download_graph_png}
+              colorScheme="blue"
+              variant="solid"
+              marginTop={{ base: "10px", md: "0" }} 
+              marginBottom={{ base: "10px", md: "0" }} 
+              width={{ base: "70%", md: "auto" }} 
+            >
+              Download PNG
+            </Button>
           </HStack>
         </div>
-      </Split>
-      <SpeedInsights/>
+        </div>
+      <SpeedInsights />
     </ChakraProvider>
+    
   );
 }
 
