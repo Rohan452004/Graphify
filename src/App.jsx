@@ -404,7 +404,7 @@ function App() {
     
         <div className="cy-container">
           <div className="graph-specification">
-            <Menu closeOnSelect={false}>
+            <Menu closeOnSelect={true}>
               <MenuButton as={Button} colorScheme='blue' mt={{ base: '10px', md: '0' }}>
                 Customizations <ChevronDownIcon />
               </MenuButton>
