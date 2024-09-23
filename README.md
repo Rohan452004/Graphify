@@ -85,7 +85,6 @@ Ensure you have the following installed:
 - Cytoscape.js: Graph visualization library.
 - Cytoscape-edgehandles: Extension for edge drawing between nodes.
 - Chakra UI: Component library for UI elements.
-- React-Split: Used for creating the resizable split view.
 
 ## Future Improvements
 - **Algorithm Support:** Add more graph algorithms such as Dijkstra’s shortest path, Prim’s or Kruskal’s MST, etc.
