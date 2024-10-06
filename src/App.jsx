@@ -348,19 +348,19 @@ function App() {
       <ChakraProvider>
       <div className="split">
         <div className="nodes_input">
-          <Card marginTop="5px" width="90%" maxWidth="600px" backgroundColor="lightcyan">
+          <Card marginTop="7px" width="90%" maxWidth="600px" backgroundColor="lightcyan">
             <CardHeader>
               <Flex align="center" justify="center" wrap="wrap">
                 <Image
                   src="./bfs_dfs.gif"
                   alt="Graph Visualization"
                   height={{ base: '80px', md: '100px' }}
-                  width={{ base: '150px', md: '200px' }}
-                  mr={{ base: '10px', md: '20px' }}
+                  width={{ base: '120px', md: '200px' }}
+                  mr={{ base: '5px', md: '20px' }}
                   maxW="100%"
                 />
-                <Box textAlign="center" my={4} py={4} borderRadius="md">
-                  <Heading fontFamily="cursive" fontStyle="italic" fontWeight="1000" fontSize={{ base: 'x-large', md: 'xx-large' }} letterSpacing="wide" color="blue.600">
+                <Box textAlign="center" my={4} py={2} borderRadius="md">
+                  <Heading fontFamily="cursive" fontStyle="italic" fontWeight="1000" fontSize={{ base: 'x-large', md: 'xx-large' }}  color="blue.600">
                     Graphify
                   </Heading>
                 </Box>
